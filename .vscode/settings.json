@@ -1,5 +1,5 @@
 {
-  "editor.formatOnSave": false, // 保存時にフォーマット
+  "editor.formatOnSave": true, // 保存時にフォーマット
   "editor.formatOnType": true, // 入力中（改行時）にフォーマット
   "editor.formatOnPaste": true, // ペースト時にフォーマット
   "editor.codeActionsOnSave": {
