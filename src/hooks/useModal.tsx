@@ -5,5 +5,5 @@ export const useModal = () => {
   const toggle = () => {
     setShow(!show);
   };
-  return { show, toggle };
+  return { show, setShow, toggle };
 };

@@ -1,12 +1,20 @@
 import styled from "styled-components";
 import { ModalCloseButton } from "../atoms/ModalCloseButton";
-import { VFC } from "react";
+import { VFC, Dispatch, SetStateAction } from "react";
 type Props = {
   show: boolean;
   toggle: () => void;
+  todoTitle: string;
+  userId: string;
+  setTodoText: Dispatch<SetStateAction<string>>;
+  setUserId: Dispatch<SetStateAction<string>>;
+  addTask: () => void;
 };
 export const Modal: VFC<Props> = (props) => {
-  const { toggle, show } = props;
+  const { toggle, show, todoTitle, userId, setTodoText, setUserId, addTask } =
+    props;
+  const onChangeTodoText = (event: any) => setTodoText(event.target.value);
+  const onChangeCategory = (event: any) => setUserId(event.target.value);
   if (show) {
     return (
       <>
@@ -16,13 +24,21 @@ export const Modal: VFC<Props> = (props) => {
             <SModalBox>
               <SModalItem>
                 <SModalTitle>TODO</SModalTitle>
-                <SModalInput />
+                <SModalInput
+                  value={todoTitle}
+                  onChange={onChangeTodoText}
+                  placeholder="todoを入力"
+                />
               </SModalItem>
               <SModalItem>
                 <SModalTitle>CATEGORY</SModalTitle>
-                <SModalInput />
+                <SModalInput
+                  value={userId}
+                  onChange={onChangeCategory}
+                  placeholder="categoryを入力"
+                />
               </SModalItem>
-              <SModalSend>POST</SModalSend>
+              <SModalSend onClick={addTask}>POST</SModalSend>
             </SModalBox>
           </SModalContent>
         </SModalOverran>

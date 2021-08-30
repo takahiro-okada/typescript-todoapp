@@ -4,13 +4,15 @@ import { VFC } from "react";
 type Props = {
   title: string;
   color: string;
+  taskLength: number;
 };
 export const BoxTitle: VFC<Props> = (props) => {
-  const { color, title } = props;
+  const { color, title, taskLength } = props;
   return (
     <SBoxTitle>
       <STitleCircle color={color}></STitleCircle>
       <STitle>{title}</STitle>
+      <STitleNumber>{taskLength}</STitleNumber>
     </SBoxTitle>
   );
 };
@@ -37,4 +39,13 @@ const STitleCircle = styled.span`
   top: 50%;
   left: 0;
   transform: translate(0%, -50%);
+`;
+const STitleNumber = styled.span`
+  font-size: 65px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
 `;
